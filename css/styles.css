@@ -11,7 +11,7 @@ body {
     letter-spacing: 0.02em;
     font-weight: 400;
     background-color: #fff;
-    color: #434455;    
+    color: #434455;
 }
 
 .container {
@@ -59,23 +59,24 @@ a {
     color: #434455;
 }
 
-a:hover, a:focus {
-    color: #404bbf;
-}
-
 .header {
     border-bottom: 1px solid #e7e9fc;
 }
 
-.header-container {    
+.header-container {
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
     align-items: center;
 }
 
 .header-link {
     display: inline-block;
     padding-block: 24px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-link:hover, .header-link:focus {
+    color: #404bbf;
 }
 
 .nav-list {
@@ -95,6 +96,8 @@ a:hover, a:focus {
 
 
 .logo {
+    display: inline-block;
+    padding-block: 24px;
     font-family: "Raleway", sans-serif;
     font-weight: 700;
     font-size: 18px;
@@ -111,16 +114,29 @@ a:hover, a:focus {
     color: #2e2f42;
 }
 
-.logo-studio:hover, .logo-studio:active {
-    color: #404bbf;
-}
-
 .nav-link {
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #2e2f42;
+    position: relative;
+}
+
+.nav-link::after {
+    content: "";
+    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after, .nav-link:focus::after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: #404bbf;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 address {
@@ -131,23 +147,24 @@ address {
     text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-
 .hero {
-    background: #2e2f42;
+    background-color: #2e2f42;
+    background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/hero-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     padding-block: 188px;
 }
 
 .hero-container {
     display: flex;
     justify-content: center;
-    align-items: center;    
-    
+    align-items: center;
 }
 
-
 .hero-bg {
-    max-width: 496px;    
-    margin: 0 auto;    
+    max-width: 496px;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -172,6 +189,7 @@ address {
     padding: 16px 32px;
     border-radius: 4px;
     border: none;
+    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover, .hero-button:focus {
@@ -187,6 +205,19 @@ address {
 
 .features-item {
     flex-basis: calc((100% - 72px) / 4);
+}
+
+.features-icon-div {
+    border: 1px solid #8e8f99;
+    border-radius: 4px;
+    padding: 24px 100px;
+    background: #f4f4fd;
+    margin-bottom: 8px;
+}
+
+.features-icon {
+    width: 64px;
+    height: 64px;
 }
 
 .feature-title {
@@ -220,8 +251,8 @@ address {
 }
 
 .team-card {
-    border-radius: 0 0 4px 4px;    
-    padding-inline: 0px;    
+    border-radius: 0 0 4px 4px;
+    padding-inline: 0px;
     box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08), 0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
     background: #fff;
 }
@@ -244,6 +275,28 @@ address {
     color: #434455;
 }
 
+.team-icons-div {
+    display: flex;
+    gap: 24px;
+    max-height: 40px;
+    margin-top: 8px;
+}
+
+.ellipse {
+    border-radius: 50px;
+    flex-basis: calc((100% - 3 * 24px) / 4);
+    height: 40px;
+    background-color: #4d5ae5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-icon {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+}
 
 .portfolio-header-title, .team-title, .features-title {
     font-weight: 700;
@@ -269,6 +322,27 @@ address {
     flex-basis: calc((100% - 48px)/3);
 }
 
+.portfolio-img-wrapper {
+    position: relative;
+    overflow: hidden;    
+}
+
+.portfolio-description {
+    padding: 40px 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    background: #4d5ae5;
+    color: #f4f4fd;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card-content:hover .portfolio-description {
+    transform: translateY(0);
+}
 
 .description-container {
     border-bottom: 1px solid #e7e9fc;
@@ -296,20 +370,22 @@ address {
     padding-block: 100px;
 }
 
+.footer-container {
+    display: flex;
+}
 
 .footer-content {
     max-width: 264px;
+    margin-right: 120px;
 }
 
 .footer-logo {
-    color: #f4f4fd;    
+    color: #f4f4fd;
 }
-
 
 .footer-logo:hover {
     color: #4d5ae5;
 }
-
 
 .footer-text {
     color: #f4f4fd;
@@ -318,4 +394,35 @@ address {
     line-height: 1.5;
     letter-spacing: 0.02em;
     margin-top: 16px;
+}
+
+.footer-social-media {
+    margin-bottom: 16px;
+    margin-top: 0;
+}
+
+.social {       
+    width: 208px;    
+}
+
+.footer-text-div {
+    display: flex;
+    gap: 16px;
+    max-height: 40px;
+    margin-top: 8px;
+}
+
+.footer-social-icon {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+
+.social-ellipse {
+    flex-basis: calc((100% - 3 * 16px) / 4);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-ellipse:hover {
+    background-color: #31d0aa;
 }
